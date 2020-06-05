@@ -1,0 +1,27 @@
+$lightBlue: #60bae3
+$middleBlue: #009dcb
+$darkBlue: #0052a2
+$yellow: #fffdc7
+$lilac: #bcd2ff
+$purple: #6c89c3
+$lightGray: rgb(241,241,241)
+
+// BREACKPOINTS
+
+@mixin for-phone-only 
+  @media (max-width: 599px) { @content; }
+
+@mixin for-phone-only-landscape
+  @media screen and (orientation: landscape) and (min-device-width: 300px) and (max-device-width: 1000px) { @content; }
+
+@mixin for-tablet-portrait-only 
+  @media (min-width: 600px) and (max-width: 899px) { @content; }
+
+@mixin for-tablet-landscape-only
+  @media (min-width: 900px) and (max-width: 1199px) { @content; }
+
+@mixin for-desktop-only 
+  @media (min-width: 1200px) and (max-width: 1799px) { @content; }
+
+@mixin for-big-desktop-up 
+  @media (min-width: 1800px) { @content; }

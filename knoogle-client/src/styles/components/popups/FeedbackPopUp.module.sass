@@ -1,0 +1,63 @@
+@import '../../variables/Variables.module.sass'
+@import '../../style.sass'
+
+.feedbackPopUp
+    position: fixed
+    z-index: 500
+    top: 50%
+    left: 50%
+    height: 25%
+    width: 25%
+    transform: translate(-50%, -50%)
+    background-color: white
+    border-radius: 10px
+    padding: 30px
+    font-weight: bold
+    text-align: center
+
+.feedbackPopUpText1
+    color: $lightBlue
+    font-size: 20pt
+    font-weight: bold
+
+.feedbackPopUpText2
+    color: $middleBlue
+    font-size: 20pt
+    font-weight: bold
+    line-height: 40px
+
+.button
+    width: 40%
+    margin: 25px auto
+    font-weight: 100
+
+.overlay
+    position: fixed
+    z-index: 400
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgba(0,0,0,.5)
+
+@include for-tablet-portrait-only
+    .feedbackPopUp
+        width: 60%
+        height: auto
+        .feedbackPopUpText1
+            font-size: 30px
+        .feedbackPopUpText2
+            font-size: 30px
+@include for-tablet-landscape-only
+    .feedbackPopUp
+        width: 45%
+        height: 35%
+@include for-phone-only
+    .feedbackPopUp
+        width: 80%
+        height: 30%
+        .feedbackPopUpText1
+            font-size: 30px
+        .feedbackPopUpText2
+            line-height: 50px
+            font-size: 30px

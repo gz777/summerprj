@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+    # db:
+    #     image: postgres:latest
+    #     volumes:
+    #         - postgres_data:/var/lib/postgresql/data/
+    #     ports:
+    #         - "5432"
+    # server:
+    #     image: jerryturcios08/knoogle-server:latest
+    #     ports:
+    #         - "8000:8000"
+    #     depends_on:
+    #         - db
+    client:
+        container_name: knoogle-client
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - "/knoogle-client/node_modules"
+            - ".:/knoogle-client"
+        ports:
+            - "3000:3000"
+        environment:
+            - NODE_ENV=development
+
+volumes:
+    postgres_data:

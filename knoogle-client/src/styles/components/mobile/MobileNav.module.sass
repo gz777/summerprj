@@ -1,0 +1,31 @@
+@import '../../variables/Variables.module'
+@import '../../style'
+
+.mobileNav
+    display: none
+    
+// MOBILE VERSION
+
+@include for-phone-only
+    .mobileNav
+        position: fixed
+        top: 90%  
+        width: 100%  
+        display: flex
+        justify-content: center
+        align-items: center    
+        background-color: $lightGray
+        height: 10%
+        z-index: 300
+        nav
+            width: 60%
+            padding: 0
+            display: block
+            ul 
+                li:nth-child(2),li:nth-child(3)
+                    display: block
+                li 
+                    font-size: 1rem
+                    i 
+                        img 
+                            height: 2.5rem

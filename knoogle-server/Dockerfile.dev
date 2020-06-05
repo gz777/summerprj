@@ -1,0 +1,14 @@
+# Python version for the container
+FROM python:3.7
+
+# Set environment and create the directory
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /knoogle-server
+WORKDIR /knoogle-server
+ADD . /knoogle-server
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Copy the project
+COPY . /knoogle-server/

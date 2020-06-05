@@ -1,0 +1,14 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.profileContainer
+    background-color: $lilac
+    height: 100vh
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+@include for-phone-only
+    .profileContainer
+        background-color: white

@@ -1,0 +1,19 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.searchContainer
+    width: 90%
+    margin: auto
+    .searchMessage
+        color: $darkBlue
+        font-size: 1.5rem
+        font-weight: 700
+        margin-left: 20px
+        margin-bottom: 10px
+    @include for-phone-only
+        .searchMessage
+            color: $darkBlue
+            font-size: 1.5rem
+            font-weight: 700
+            margin-bottom: 10px
+            text-align: center

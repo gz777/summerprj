@@ -1,0 +1,19 @@
+language: python
+
+services:
+    - docker
+    - postgresql
+
+install:
+    - docker-compose pull
+    - docker-compose build
+
+script:
+    - docker-compose run server python /knoogle-server/manage.py test --noinput
+
+deploy:
+   - provider: script
+     script: bash scripts/deploy.sh
+     on:
+       branch: master
+     skip_cleanup: true

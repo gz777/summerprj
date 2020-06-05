@@ -1,0 +1,90 @@
+@import "./variables/Variables.module.sass"
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: Trebuchet MS, Arial, sans-serif
+html
+  scroll-behavior: smooth
+
+.button
+    font-size: 1.5rem
+    background-color: $darkBlue
+    border-radius: 15px
+    text-align: center
+    color: white
+    padding: 10px 30px
+    margin-top: 10px
+    font-weight: bold
+    cursor: pointer
+
+.rst__placeholder
+    display: none
+
+button.rst__collapseButton
+    display: none
+
+
+.rst__moveHandle
+    background-color: $purple
+    border: none
+    border-radius: 10px 0 0 10px
+    box-shadow: none
+
+.rst__rowContents
+    background-color: $darkBlue
+    border: none
+    border-radius: 0 10px 10px 0
+    color: white
+    display: flex
+    transition: all .3s
+
+.rst__toolbarButton button
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background-color: $lilac
+    color: white
+    border: none
+    margin: 5px
+    font-size: 1.5rem
+    cursor: pointer
+    color: $darkBlue
+    transition: all .3s
+    &:hover
+        background-color: $purple
+        color: white
+        transform: scale(1.15)
+.rst__rowTitle
+    font-size: 130%
+.rst__rowSubtitle
+    display: none
+.rst__rowTitleWithSubtitle
+    font-size: 130%
+    height: 1.5rem
+
+.rst__lineBlock,
+.rst__lineHalfHorizontalRight,
+.rst__lineHalfVerticalBottom
+    &::before
+        background-color: $lightBlue
+        height: 3px
+.rst__lineHalfHorizontalRight
+    &:first-child
+        width: 0px !important
+        
+.rst__lineBlock,
+.rst__lineHalfHorizontalRight,
+.rst__lineHalfVerticalBottom
+    &::after
+        background-color: $lightBlue
+        width: 3px
+.rst__lineChildren
+    &::after
+        width: 3px
+        background-color: $lightBlue
+
+
+//**************************************** FORM ******************************************************
+
+

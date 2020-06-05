@@ -1,0 +1,74 @@
+@import '../../variables/Variables.module'
+@import '../../style'
+
+header
+    width: 90%
+    margin: auto
+    margin-bottom: 125px
+    position: relative
+    z-index: 100
+    .logo
+        display: none
+    nav 
+        width: 60%
+        padding-top: 50px
+        ul 
+            display: flex
+            align-items: center
+            justify-content: space-between
+            li 
+                display: flex
+                justify-content: space-between
+                align-items: flex-start
+                list-style: none
+                font-size: 1.3rem
+                font-weight: 00
+                color: $darkBlue
+                a 
+                    text-decoration: none
+                    color: $darkBlue 
+                .mainLogo
+                    height: 7rem
+                    cursor: pointer
+                .icon
+                    margin-right: 5px
+                    img 
+                        height: 1.6rem 
+                .about
+                    img 
+                        margin-top: -10px
+                        height: 2rem
+
+@include for-tablet-portrait-only
+    header
+        margin-bottom: 60px
+        nav 
+            width: 100%
+            ul 
+                li 
+                    .mainLogo
+                        height: 5rem
+    
+@include for-tablet-landscape-only
+    header
+        nav 
+            ul 
+                li 
+                    .mainLogo
+                        height: 5rem
+@include for-phone-only
+    header
+        margin-bottom: 50px
+        nav
+            display: none
+        .logo
+            display: flex
+            margin-top: 50px
+            a 
+                width: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+            img 
+                width: 70%
+                margin: auto

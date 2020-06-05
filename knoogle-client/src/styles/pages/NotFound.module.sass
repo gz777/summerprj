@@ -1,0 +1,49 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.notFoundMessage
+    color: $lightBlue
+    text-align: center
+    display: flex
+    flex-direction: column
+.notFoundNumber
+    color: $middleBlue
+    font-size: 80px
+    animation: d360 1.5s 1 0s linear
+.notFoundReturnLink
+    margin-bottom: 100px
+    a 
+        color: $darkBlue
+        text-decoration: underline $darkBlue
+
+
+@include for-phone-only
+    .notFoundMessage
+        margin-top: 150px
+        
+@keyframes d360
+    0%
+        transform: rotate(0) scale(0)
+        opacity: 0
+        
+    20%
+        transform: rotate(60deg) scale(0.2)
+        opacity: 0.2
+        
+    40%
+        transform: rotate(120deg) scale(0.4)
+        opacity: 0.4
+        
+    60%
+        transform: rotate(180deg) scale(0.6)
+        opacity: 0.6
+        
+    80%
+        transform: rotate(270deg) scale(0.8)
+        opacity: 0.8
+        
+    100%
+        transform: rotate(360deg) scale(1)
+        opacity: 1
+        
+

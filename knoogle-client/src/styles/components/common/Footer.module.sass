@@ -1,0 +1,86 @@
+@import '../../variables/Variables.module'
+@import '../../style'
+    
+.grayLine
+    height: 3px
+    width: 100%
+    background-color: $lightGray
+    margin-bottom: 5px
+ 
+.footerBody
+    height: 30vh
+    display: flex 
+    flex-direction: column
+    width: 90%
+    margin: auto
+.siteMap
+    height: 100%
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+.siteMapLogo
+    width: 15%
+    img 
+        width: 100%
+        
+.siteMapLinks
+    ul
+        margin-top: 10px
+        display: flex
+        flex-wrap: wrap
+        width: 45%
+        margin-bottom: 20px
+        li 
+            list-style: none
+            width: 27%
+            padding-right: 5%
+            &:last-child
+                width: 45%
+            a 
+                text-decoration: none
+                color: $darkBlue
+                
+.footerSocial
+    width: 40%
+    margin: auto
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: space-between
+    span 
+        display: inline
+        font-size: .85rem
+        color: $darkBlue
+    a
+        img 
+            width: 25px
+            height: 25px
+
+//SECOND SECTION TABLET VERSION
+
+@include for-tablet-portrait-only     
+    .button
+        font-size: 1.2rem
+    .footerBody
+        height: 20vh
+        .footerSocial
+            width: 60%
+        nav
+            ul 
+                width: 60%
+
+@include for-tablet-landscape-only
+    .footerSocial
+        width: 45%
+
+@include for-phone-only
+    .button
+        font-size: 1rem
+        padding: 5px 15px
+        border-radius: 10px
+    .footerBody
+        display: none
+
+
+   

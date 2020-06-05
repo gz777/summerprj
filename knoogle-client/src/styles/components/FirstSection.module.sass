@@ -1,0 +1,74 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+
+
+.middleBlue
+    color: $middleBlue
+.lightBlue
+    color: $lightBlue
+.darkBlue
+    color: $darkBlue
+
+.firstSectionContainer
+    width: 90%
+    margin: auto
+    height: 100vh
+
+.firstSectionBody
+    width: 100%
+    .firstSectionH2
+        font-size: 3rem
+        display: flex
+        flex-direction: column
+        h2
+            margin-bottom: 20px
+.firstSectionButtons
+    width: 20%
+    position: relative
+    z-index: 100000
+.DownArrow
+    margin: auto
+    width: 100%
+    display: flex
+    justify-content: center
+    z-index: 10
+    img
+        width: 70px
+        height: 70px
+        cursor: pointer
+
+
+@include for-tablet-portrait-only
+    .firstSectionContainer
+        height: 80vh
+    .firstSectionBody
+        width: 100%
+        .firstSectionH2
+            font-size: 2.4rem
+@include for-tablet-landscape-only
+    .firstSectionContainer
+        height: 60vh
+    .firstSectionBody
+        width: 100%
+        .firstSectionH2
+            font-size: 2.4rem
+@include for-phone-only
+    .firstSectionContainer
+        height: 60vh
+    .firstSectionBody
+        width: 100%
+        .firstSectionH2
+            font-size: 1.4rem
+    .firstSectionButtons
+        width: 40%
+        .button
+            font-size: 1.2rem
+    .DownArrow
+        display: none
+
+@include for-phone-only-landscape
+    .firstSectionContainer
+    .firstSectionBody
+        .firstSectionH2
+            font-size: 1.8rem

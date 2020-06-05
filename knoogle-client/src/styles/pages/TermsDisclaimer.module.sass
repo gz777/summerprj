@@ -1,0 +1,23 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.termsDisclaimerBody
+    width: 60%
+    margin: auto
+    margin-bottom: 100px
+.TermsDisclaimer
+    h3
+        color: $lightBlue
+        margin-bottom: 15px
+    p 
+        color: $darkBlue
+        margin-bottom: 10px
+@include for-tablet-portrait-only
+
+@include for-tablet-landscape-only
+
+@include for-phone-only
+    .termsDisclaimerBody
+        text-align: center
+        width: 90%
+            

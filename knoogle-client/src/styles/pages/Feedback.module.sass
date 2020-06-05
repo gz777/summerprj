@@ -1,0 +1,73 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+
+.feedBackLogoMobile
+    display: none
+.formH2
+    text-align: center
+    margin-top: -100px
+    color: $darkBlue
+    margin-bottom: 50px
+.form
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    width: 30%
+    height: 55vh
+    margin: auto
+    color: $darkBlue
+.feedbackLabel
+    font-size: 1rem
+    margin: 10px 0px
+.feedbackInput , .feedbackTextarea
+    background-color: $lightBlue
+    border: none
+    padding: 10px
+    border-radius: 10px
+    color: white
+    font-size: 1rem
+    &::placeholder
+        color: white
+        font-size: 1rem
+
+.feedbackTextarea
+    background-color: $darkBlue
+    resize: none
+
+.feedbackSubmit
+    appearance: none
+    -moz-appearance: none
+    -webkit-appearance: none
+    background-color: $darkBlue
+    color: white
+    width: 40%
+    margin: 30px auto 30px auto
+    font-size: 1rem
+
+@include for-tablet-portrait-only 
+    .formH2
+        margin-top: 0px
+    .form
+        height: 45vh
+        width: 50%
+    .button
+        padding: 10px 20px
+@include for-tablet-landscape-only
+    .button
+        padding: 10px 30px
+        
+@include for-phone-only
+    .formContainer
+        height: 100vh
+    .formH2
+        margin-top: 0px
+    .form
+        height: 60vh
+        width: 90%
+
+@include for-phone-only-landscape
+    .form
+        height: 90vh
+    .feedbackSubmit
+        height: 100px

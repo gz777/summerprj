@@ -1,0 +1,79 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.container
+    background-color: $lilac
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+.RegisterContainer
+    width: 40%
+    height: 80%
+    background-color: white
+    border-radius: 10px
+    margin: auto
+    padding: 5% 
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: $darkBlue
+
+.logo
+    width: 100%
+    height: 15%
+    margin-bottom: 10%
+    img
+        width: 100%
+        height: 100%
+.title
+    text-align: center
+    margin-bottom: 20px
+    h2 
+        font-size: 2rem
+        margin-bottom: 5px
+    p 
+        font-size: 1rem
+
+.email
+    width: 100%
+    margin-bottom: 20px
+    input
+        width: 100%
+        background-color: $lightBlue
+        border: none
+        padding: 10px
+        border-radius: 10px
+        color: white
+        font-size: 1rem
+        margin-bottom: 5px
+        &::placeholder
+            color: white
+            font-size: 1rem
+    p 
+        color: gray
+        margin-left: 10px
+.checkbox
+    margin-right: auto
+.button
+    font-size: 1.3rem
+    width: 50%
+
+
+@include for-tablet-portrait-only 
+    .RegisterContainer
+        width: 70%
+        height: 60%
+@include for-tablet-landscape-only
+    .RegisterContainer
+        width: 50%
+@include for-phone-only
+    .container
+        background-color: white
+    .RegisterContainer
+        margin-top: 90px
+        width: 90%
+        height: 80%
+        margin-top: -3%
+    .logo
+        margin-top: 50px

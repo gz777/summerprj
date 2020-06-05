@@ -1,0 +1,345 @@
+@import '../variables/Variables.module.sass'
+@import '../style.sass'
+
+.ontology
+    height: 55vh
+    width: 90%
+    margin: auto
+    margin-top: -75px
+    margin-bottom: 75px
+    display: flex
+.ontologyFirstSection
+    width: 50%
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    .textContainer
+        font-size: 2rem
+        width: 70%
+        h2
+            font-size: 4rem
+            color: $lightBlue
+            &:last-child
+                color: $middleBlue
+    .buttonsContainer
+        margin-top: 40px
+        display: flex
+        p
+            font-size: 1.2rem
+            width: 30%
+            margin-right: 10%
+            color: $darkBlue
+            font-weight: bold
+            line-height: 3
+        .buttons
+            width: 30%
+            .button
+                &:last-child
+                    background-color: $lightBlue
+                    margin-top: 20px
+    .tutorialButtons
+        width: 30%
+        .writtenTutorial,.videoTutorial
+            font-size: 1.2rem
+            width: 80%
+            margin: auto
+            background-color: $lilac
+            border-radius: 15px
+            text-align: center
+            color: white
+            padding: 10px 30px
+            margin-top: 10px
+            font-weight: bold
+            cursor: pointer
+        .videoTutorial
+            margin-top: 20px
+            background-color: $purple
+
+
+.ontologySecondSection
+    width: 50%
+    img
+        height: 100%
+        width: 100%
+
+.ontologyCreation
+    width: 90%
+    margin: auto
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    h2
+        font-size: 4rem
+        color: $lightBlue
+        margin-bottom: 50px
+        text-align: center
+
+
+.ontologyTreeContainer
+    width: 100%
+    display: flex
+    margin-bottom: 50px
+    .buttons
+        width: 20%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        button
+            width: 80%
+            padding: 10px
+            border-radius: 10px
+            margin-bottom: 10px
+            background-color: $purple
+            color: white
+            font-weight: bold
+            font-size: 1rem
+            border: none
+            &:last-child
+                background: rgba(108,137,195,.7)
+            &:hover
+                background: rgb(108,137,195)
+                cursor: pointer
+    .tree
+        width: 80%  
+        height: 800px
+    .tutorialButtons
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        width: 20%
+        .writtenTutorial,.videoTutorial
+                font-size: 1rem
+                width: 100%
+                background-color: $lilac
+                border-radius: 15px
+                padding: 10px 30px
+                text-align: center
+                color: white
+                margin-top: 10px
+                font-weight: bold
+                cursor: pointer
+        .videoTutorial
+            margin-top: 20px
+            background-color: $purple
+    .root
+        background-color: $darkBlue
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        color: white
+        font-size: 1.1rem
+        width: 100px
+        border-radius: 13px
+        height: 40px
+        cursor: pointer
+        &:hover
+            background-color: $lightBlue
+.termContainer,.termContainerChild
+    height: 60px
+    width: 200px
+    display: flex
+    margin-bottom: -12px
+    .conector
+        width: 20%
+        height: 80%
+        margin-left: 10px
+        border-left: solid 2px $middleBlue
+        border-bottom: solid 2px $middleBlue
+        position: relative
+        z-index: 100
+    .term
+        background-color: $darkBlue
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        color: white
+        font-size: 1.1rem
+        width: 100px
+        border-radius: 13px
+        height: 40px
+        margin-top: 25px
+        position: relative
+        z-index: 200
+        cursor: pointer
+        &:hover
+            background-color: $lightBlue
+.termContainerChild
+    margin-left: 50px
+
+.ontologyTreeSearchBar
+    width: 100%
+    .search
+        width: 50%
+        margin: auto
+        border: solid 4px $middleBlue
+        border-radius: 15px
+        height: 2.8rem
+        font-size: 1.3rem
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        background: url("../../resources/search-icon.svg") no-repeat scroll
+        background-size: 5%
+        background-position-x: 1%
+        background-position-y: 50%
+        padding-left: 5%
+        margin-bottom: 20px
+    p
+        text-align: center
+        color: $darkBlue
+        margin-bottom: 20px
+        font-weight: bold
+.mobileButtons
+    display: none
+.mobileSearchBar
+    display: none
+
+@include for-tablet-portrait-only
+    .ontology
+        margin-top: 75px
+        justify-content: center
+        flex-direction: column
+        width: 100%
+        margin: auto
+        height: 60vh
+        .ontologyFirstSection
+            width: 70%
+            justify-content: center
+            .textContainer
+                width: 100%
+                text-align: center
+                h2
+                    font-size: 2.5rem
+            .tutorialButtons
+                .writtenTutorial,.videoTutorial
+                    width: 100%
+            .buttonsContainer
+                justify-content: space-between
+                width: 80%
+                margin: auto
+                p
+                    width: 50%
+                .buttons
+                    width: 60%
+        .ontologySecondSection
+            width: 60%
+            margin: auto
+            margin-top: 0px
+
+        .mobileButtons
+            display: none
+            justify-content: space-between
+            align-items: center
+            width: 40%
+            color: $purple
+            font-weight: bold
+            font-size: 1.2rem
+            .button
+                background-color: $lightBlue
+
+@include for-tablet-landscape-only
+    .ontology
+        .ontologyFirstSection
+            width: 50%
+            .textContainer
+                h2
+                    font-size: 3rem
+                    margin-bottom: 20px
+            .tutorialButtons
+                .writtenTutorial,.videoTutorial
+                    width: 90%
+            .buttonsContainer
+                p
+                    font-size: 1.1rem
+                .buttons
+                    width: 50%
+        .ontologySecondSection
+            width: 45%
+
+@include for-phone-only
+    .ontologyContainer
+        height: 90%
+    .ontology
+        height: 100vh
+        display: flex
+        flex-direction: column
+        align-items: center
+        .ontologyFirstSection
+            width: 100%
+            margin-top: 75px
+            display: flex
+            justify-content: space-between
+            flex-direction: column
+            .textContainer
+                width: 100%
+                text-align: center
+                h2
+                    font-size: 2.5rem
+            .tutorialButtons
+                margin-top: 25px
+                width: 100%
+            .buttonsContainer
+                margin-top: 25px
+                display: flex
+                p
+                    font-size: 1rem
+                    width: 40%
+                .buttons
+                    width: 60%
+        .ontologySecondSection
+            width: 100%
+            margin: 30px 0
+    .ontologyCreation
+        height: 100vh
+        h2
+            font-size: 2.2rem
+            margin-top: -100px
+        .ontologyTreeContainer
+            display: flex 
+            flex-direction: column
+            .tree
+                width: 120%
+                margin-left: -50px
+                order: 1
+            .tutorialButtons
+                width: 90%
+                order: 3
+                margin: auto
+            .buttons
+                width: 90%
+                order: 2
+                margin: auto
+                margin-bottom: 20px
+                button
+                    width: 100%
+            .mobileSearchBar
+                display: block
+                order: 3
+                width: 100%
+                margin-bottom: 100px
+            .search
+                width: 100%
+        .mobileButtons
+            display: none
+            justify-content: space-between
+            align-items: center
+            width: 80%
+            color: $darkBlue
+            font-weight: bold
+            font-size: 1.2rem
+        form
+            display: none
+
+@include for-phone-only-landscape
+    .ontology
+        margin-top: 300px
+        .ontologySecondSection
+            margin: 200px auto
+            img 
+                width: 85%
+                margin-left: 7.5%

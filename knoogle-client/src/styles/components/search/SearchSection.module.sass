@@ -1,0 +1,100 @@
+@import '../../variables/Variables.module'
+@import '../../style'
+
+.searchSectionBody
+    height: 75vh
+    display: flex 
+    justify-content: center
+    align-items: center
+
+
+.searchSectionMainContainer
+    width: 40%
+    height: 55%
+    display: flex 
+    flex-direction: column 
+    justify-content: space-around
+.searchSectionLogo
+    margin-bottom: 30px
+    img
+        height: 100%
+        width: 100%
+.searchSectionSearch
+    .search
+        width: 100%
+        border: solid 4px $middleBlue
+        border-radius: 15px
+        height: 3.2rem
+        font-size: 1.6rem
+        display: flex 
+        justify-content: flex-start 
+        align-items: center
+        background: url("../../../resources/search-icon.svg") left no-repeat scroll
+        background-size: 6%
+        background-position: left
+        background-position-y: 50%
+        background-position-x: 2%
+        padding-left: 10%
+        
+.searchSectionButtons
+    width: 100%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    p
+        color: $darkBlue
+        margin: 3% 0%
+        font-weight: bold
+        text-align: center
+    .searchButtons
+        display: flex
+        justify-content: space-between
+        .searchBtn
+            width: 27%
+        a
+            width: 70%
+
+
+@include for-tablet-portrait-only 
+    .searchSectionBody
+        height: 80vh
+    .searchSectionMainContainer
+        width: 60%
+        height: 30%
+    .searchSectionButtons
+        .button
+            font-size: 1.3rem
+        .searchButtons
+            
+
+
+@include for-tablet-landscape-only
+    .searchSectionMainContainer
+        width: 60%
+    .searchSectionSearch
+        margin-bottom: 50px
+
+@include for-phone-only
+    .searchSectionBody
+        height: 100vh
+    .searchSectionLogo
+    .searchSectionMainContainer
+        width: 90%
+        height: 30%
+    .searchSectionSearch
+        margin-bottom: 50px
+    .button
+        font-size: 1rem
+        padding: 5px 15px
+        border-radius: 10px
+    .searchBtn
+        height: 100%
+
+@include for-phone-only-landscape
+    .searchSectionBody
+        margin-bottom: 50px
+    .searchSectionButtons
+        margin-top: 20px
+    .searchBtn
+        height: 100%
+
