@@ -1,7 +1,7 @@
 # Development Dockerfile
 
 # Sets node version
-FROM node:8.15.1
+FROM node:12-slim
 
 # Set working directory
 WORKDIR /knoogle-client
