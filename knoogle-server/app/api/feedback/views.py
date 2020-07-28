@@ -1,19 +1,11 @@
-"""
-File: feedback/views.py
-Written By: Jerry Turcios
-Purpose: Contains the views for the feedback app.
-Version: Python 3.7
-"""
-import json
-
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-
+from app import app
+from flask import request, Response
 from .email import send_email
 
+@app.route("/api/feedback/",methods=['POST'])
+@app.route("/api/feedback/feedback",methods=['GET','POST'])
 
-@csrf_exempt
-def email_client(request):
+def email_client():
     """
     The email_client function recieves a request with the content needed to
     send an email. It calls the send_email function and returns an HTTP
@@ -22,11 +14,11 @@ def email_client(request):
     :param request: The HTTP request from the client
     :return: The HTTP response from sending the email
     """
-    body_unicode = request.body.decode('utf-8')
-    body = json.loads(body_unicode)
+    
+    body = request.get_json()
 
     name = body['name']
     email = body['email']
     comments = body['comments']
-
-    return HttpResponse(send_email(name, email, comments))
+    
+    return Response(send_email(name, email, comments))

@@ -1,29 +1,19 @@
-version: "3"
+version: "3.0"
 
 services:
-    db:
-        container_name: knoogle-db
-        image: postgres:latest
-        volumes:
-            - postgres_data:/var/lib/postgresql/data/
-        ports:
-            - "5432"
-    server:
-        container_name: knoogle-server
+    flask:
         build:
             context: .
             dockerfile: Dockerfile.dev
-        command: >
-            bash -c '
-            python manage.py makemigrations &&
-            python manage.py migrate &&
-            python manage.py runserver 0.0.0.0:8000'
+        container_name: knoogle-server
+        restart: always
         volumes:
-            - .:/knoogle-server
+            - .:/app
+        environment:
+            - APP_NAME=knoogle-server
         ports:
             - "8000:8000"
-        depends_on:
-            - db
+        expose:
+            - 8000
+    
 
-volumes:
-    postgres_data:
