@@ -1,8 +1,8 @@
 # Knowglet Project
-**The repo is designated for Knowglet project.**
+The repo is designated for Knowglet project.
 
-**Installation procedure:**
-### 1. Pre-requisits
+## Installation procedure:
+### 1. Prerequisites
    - Python 3.7+
    - Docker, Docker-Compose
    - git
