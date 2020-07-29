@@ -3,9 +3,9 @@
 
 **Installation procedure:**
 ### 1. Pre-requisits
-   -Python 3.7+
-   -Docker, Docker-Compose
-   -git
+   - Python 3.7+
+   - Docker, Docker-Compose
+   - git
 
 ### 2. Shell commands
    > clone the repo to local
