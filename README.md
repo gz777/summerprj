@@ -2,12 +2,12 @@
 **The repo is designated for Knowglet project.**
 
 **Installation procedure:**
-###1. Pre-requisits
+### 1. Pre-requisits
    -Python 3.7+
    -Docker, Docker-Compose
    -git
 
-###2. Shell commands
+### 2. Shell commands
    > clone the repo to local
    ```shell
    $git clone https://github.com/gz777/summerprj.git
