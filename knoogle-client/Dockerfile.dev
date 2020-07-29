@@ -1,7 +1,7 @@
 # Development Dockerfile
 
 # Sets node version
-FROM node:12-slim
+FROM node:12
 
 # Set working directory
 WORKDIR /knoogle-client
@@ -12,7 +12,8 @@ ENV PATH /knoogle-client/node_modules/.bin:$PATH
 # Install and cache app dependencies
 COPY package.json /knoogle-client/package.json
 RUN npm install
-RUN npm install react-scripts@3.0.1 -g --silent
+RUN npm audit fix
+RUN npm install react-scripts@3.4.1 -g --silent
 
 # Start app
 CMD ["npm", "start"]
