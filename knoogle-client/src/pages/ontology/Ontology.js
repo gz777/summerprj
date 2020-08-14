@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import SortableTree, {
     addNodeUnderParent,
     changeNodeAtPath,
@@ -25,10 +26,39 @@ export default class Ontology extends Component {
         node: null,
         path: null,
         ontologyName: "",
+        ontologies: [],
         ontologyNameInput: "",
         redirect: false,
         searchInput: "",
-        treeData: []
+        treeData: [],
+        isNewOntologyBtn: false
+    };
+
+    saveOntology = () => {
+        /*******    NEW     *****/
+
+        const currentOntologie = JSON.parse(localStorage.getItem("terms"));
+        if (this.state.ontologies.length >= 3) {
+            alert("cant save more than 3 ontologies");
+        } else {
+            this.setState({
+                ontologies: [...this.state.ontologies, currentOntologie],
+                isNewOntologyBtn: true
+            });
+        }
+    };
+
+    changeOntology = e => {
+        const ontology = JSON.parse(localStorage.getItem("ontologies"));
+        const terms = JSON.parse(localStorage.getItem("terms"));
+        ontology.map(ont => {
+            if (ont[0].title === e.target.value) {
+                this.setState({
+                    ontologyName: ont[0].title,
+                    treeData: ont
+                });
+            }
+        });
     };
 
     openAddRoot = () => {
@@ -67,7 +97,7 @@ export default class Ontology extends Component {
                         expandParent: true,
                         getNodeKey: this.state.getNodeKey,
                         newNode: {
-                            id,
+                            id: uuidv4(),
                             title: term,
                             subtitle: description,
                             children: []
@@ -81,7 +111,7 @@ export default class Ontology extends Component {
             } else {
                 const oldTreeData = [...this.state.treeData];
                 oldTreeData.push({
-                    id,
+                    id: uuidv4(),
                     title: term,
                     subtitle: description,
                     children: []
@@ -153,6 +183,18 @@ export default class Ontology extends Component {
             });
         }
     };
+    handleCreateNewOntology = () => {
+        const confirmReset = window.confirm(
+            "Are you sure you want to reset create a new ontology"
+        );
+
+        if (confirmReset) {
+            this.setState({
+                ontologyName: "",
+                treeData: []
+            });
+        }
+    };
 
     handleSearchInput = e => {
         this.setState({
@@ -188,6 +230,26 @@ export default class Ontology extends Component {
             ontologyNameInput: e.target.value
         });
     };
+    handleDeleteOntology = () => {
+        const currentOnt = JSON.parse(localStorage.getItem("terms"))[0].id;
+        const ontDB = JSON.parse(localStorage.getItem("ontologies"));
+        const confirmation = window.confirm(
+            "Are you sure to delete the current Ontology?"
+        );
+        const newDB = ontDB.filter(ont => {
+            if (ont[0].id !== currentOnt) {
+                return ont;
+            }
+        });
+
+        if (confirmation) {
+            this.setState({
+                ontologies: newDB,
+                treeData: [],
+                ontologyName: "Select an"
+            });
+        }
+    };
 
     componentDidMount() {
         document.title = `Knowglet - Ontology`;
@@ -202,7 +264,10 @@ export default class Ontology extends Component {
             this.setState({
                 isNewOntology: false,
                 ontologyName: ontologyName,
-                treeData: terms
+                treeData: terms,
+                ontologies: JSON.parse(
+                    localStorage.getItem("ontologies")
+                ) /*******    NEW     *****/
             });
         } catch (error) {
             // Error handling
@@ -212,10 +277,17 @@ export default class Ontology extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (
             prevState.ontologyName !== this.state.ontologyName ||
-            prevState.treeData !== this.state.treeData
+            prevState.treeData !== this.state.treeData ||
+            prevState.ontologies !==
+                this.state.ontologies /*******    NEW     *****/
         ) {
             const terms = JSON.stringify(this.state.treeData);
+
             localStorage.setItem("ontologyName", this.state.ontologyName);
+            localStorage.setItem(
+                "ontologies",
+                JSON.stringify(this.state.ontologies)
+            ); /*******    NEW     *****/
             localStorage.setItem("terms", terms);
 
             document.title = `Knowglet - ${this.state.ontologyName} Ontology`;
@@ -319,13 +391,61 @@ export default class Ontology extends Component {
                     </div>
                 </div>
                 <div className={styles.ontologyCreation} style={display}>
-                    <h2>{this.state.ontologyName} Ontology</h2>
+                    {this.state.ontologies.length !== 0 ? (
+                        <h2>{this.state.ontologyName} Ontology</h2>
+                    ) : (
+                        <h2>Create New Ontology</h2>
+                    )}
+
                     <div className={styles.ontologyTreeContainer}>
                         <div className={styles.buttons}>
+                            {this.state.ontologies.length >= 1 ? (
+                                <h3 className={styles.savedOntTitle}>
+                                    Ontology list locally saved:
+                                </h3>
+                            ) : null}
+                            <ol className={styles.savedOntList}>
+                                {this.state.ontologies.length !==
+                                0 /*******    NEW     *****/
+                                    ? this.state.ontologies.map(ontologies => (
+                                          <li className={styles.ontListButton}>
+                                              <button
+                                                  onClick={this.changeOntology}
+                                                  value={ontologies[0].title}
+                                              >
+                                                  {ontologies[0].title.length <=
+                                                  17
+                                                      ? ontologies[0].title
+                                                      : ontologies[0].title
+                                                            .substring(0, 20)
+                                                            .concat("...")}
+                                              </button>
+                                          </li>
+                                      ))
+                                    : null}
+                            </ol>
                             <button onClick={this.handleResetTree}>
                                 Reset
                             </button>
-                            <button>Video Tutorial</button>
+                            {/* <button>Video Tutorial</button> */}
+                            {this.state.ontologies.length >= 0 &&
+                            this.state.ontologies.length < 3 ? (
+                                <button onClick={this.handleCreateNewOntology}>
+                                    Create New Ontology
+                                </button>
+                            ) : null}{" "}
+                            {/*******    NEW     *****/}
+                            <button onClick={this.saveOntology}>
+                                Save Ontology
+                            </button>
+                            {this.state.ontologies.length >= 1 ? (
+                                <button
+                                    style={{ backgroundColor: "red" }}
+                                    onClick={this.handleDeleteOntology}
+                                >
+                                    Delete Ontology
+                                </button>
+                            ) : null}
                         </div>
                         <div className={styles.tree}>
                             <SortableTree
