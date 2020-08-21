@@ -7,6 +7,9 @@ import SortableTree, {
     removeNodeAtPath
 } from "react-sortable-tree";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import AddRoot from "./AddRoot";
 import AddTerm from "./AddTerm";
 import { Footer, Header } from "../../components/common";
@@ -31,31 +34,80 @@ export default class Ontology extends Component {
         redirect: false,
         searchInput: "",
         treeData: [],
-        isNewOntologyBtn: false
+        isNewOntologyBtn: false,
+        exist: false
     };
 
     saveOntology = () => {
-        /*******    NEW     *****/
+        const currentOntologie = this.state.treeData;
+        const ontologies = this.state.ontologies;
 
-        const currentOntologie = JSON.parse(localStorage.getItem("terms"));
-        if (this.state.ontologies.length >= 3) {
-            alert("cant save more than 3 ontologies");
-        } else {
+        if (ontologies.length === 0) {
             this.setState({
-                ontologies: [...this.state.ontologies, currentOntologie],
-                isNewOntologyBtn: true
+                ontologies: [...ontologies, currentOntologie],
+                isNewOntologyBtn: true,
+                exist: true
+            });
+            toast.success("Save Succesfully", {
+                position: "top-left",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined
             });
         }
+        // eslint-disable-next-line
+        ontologies.map(ontology => {
+            if (ontology[0].id === currentOntologie[0].id) {
+                let itemIndex = ontologies.indexOf(ontology);
+                let newArray = [...ontologies];
+                newArray[itemIndex] = currentOntologie;
+                this.setState({
+                    ontologies: newArray,
+                    exist: true
+                });
+                toast.success("Save Succesfully", {
+                    position: "top-left",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined
+                });
+            }
+        });
+        // eslint-disable-next-line
+        ontologies.map(() => {
+            if (ontologies.length < 3 && this.state.exist === false) {
+                this.setState({
+                    ontologies: [...ontologies, currentOntologie],
+                    exist: true
+                });
+                toast.success("Save Succesfully", {
+                    position: "top-left",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined
+                });
+            }
+        });
     };
 
     changeOntology = e => {
         const ontology = JSON.parse(localStorage.getItem("ontologies"));
-        const terms = JSON.parse(localStorage.getItem("terms"));
+        // eslint-disable-next-line
         ontology.map(ont => {
             if (ont[0].title === e.target.value) {
                 this.setState({
                     ontologyName: ont[0].title,
-                    treeData: ont
+                    treeData: ont,
+                    exist: true
                 });
             }
         });
@@ -191,7 +243,8 @@ export default class Ontology extends Component {
         if (confirmReset) {
             this.setState({
                 ontologyName: "",
-                treeData: []
+                treeData: [],
+                exist: false
             });
         }
     };
@@ -236,6 +289,7 @@ export default class Ontology extends Component {
         const confirmation = window.confirm(
             "Are you sure to delete the current Ontology?"
         );
+        // eslint-disable-next-line
         const newDB = ontDB.filter(ont => {
             if (ont[0].id !== currentOnt) {
                 return ont;
@@ -247,6 +301,15 @@ export default class Ontology extends Component {
                 ontologies: newDB,
                 treeData: [],
                 ontologyName: "Select an"
+            });
+            toast.error("Deleted Succesfully", {
+                position: "top-left",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined
             });
         }
     };
@@ -313,6 +376,17 @@ export default class Ontology extends Component {
 
         return (
             <div className={styles.ontologyContainer}>
+                <ToastContainer
+                    position="top-left"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <Mobile />
                 {this.state.redirect && this.redirectWithOntologyData()}
                 {this.state.addRootIsOpen && (
