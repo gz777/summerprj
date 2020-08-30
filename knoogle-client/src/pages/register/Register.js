@@ -1,3 +1,8 @@
+/*
+    File: src/pages/register/Register.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 

@@ -1,3 +1,8 @@
+/*
+    File: src/pages/search/SearchInput.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React from "react";
 import { Link } from "react-router-dom";
 

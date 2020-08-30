@@ -1,3 +1,8 @@
+/*
+    File: src/pages/ontology/Ontology.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";

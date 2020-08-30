@@ -1,3 +1,8 @@
+/*
+    File: src/pages/homepage/FirstSection.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React from "react";
 
 import styles from "../../styles/components/FirstSection.module.sass";

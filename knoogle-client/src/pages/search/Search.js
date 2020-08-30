@@ -1,3 +1,8 @@
+/*
+    File: src/pages/search/Search.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import axios from "axios";
 import React, { Component } from "react";
 

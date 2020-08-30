@@ -1,3 +1,8 @@
+/*
+    File: src/pages/aboutUs/AboutUs.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import Mobile from "../../components/mobile";

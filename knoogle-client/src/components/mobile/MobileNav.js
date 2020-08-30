@@ -1,3 +1,7 @@
+/*
+    File: src/components/mobile/MobileNav.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
 import React from "react";
 import { Link } from "react-router-dom";
 

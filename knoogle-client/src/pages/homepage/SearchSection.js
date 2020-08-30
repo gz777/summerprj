@@ -1,3 +1,8 @@
+/*
+    File: src/pages/homepage/SearchSection.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 

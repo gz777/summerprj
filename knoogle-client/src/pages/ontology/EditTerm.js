@@ -1,3 +1,8 @@
+/*
+    File: src/pages/ontology/EditTerm.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import styles from "../../styles/components/popups/AddRoot.module.sass";

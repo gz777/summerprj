@@ -1,3 +1,8 @@
+/*
+    File: src/pages/feedback/Feedback.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import { sendFeedback } from "../../api/feedback/feedback";

@@ -1,3 +1,8 @@
+/*
+    File: src/pages/homepage/Homepage.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import { Header, Footer } from "../../components/common";

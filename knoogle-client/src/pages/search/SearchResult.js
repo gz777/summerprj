@@ -1,3 +1,8 @@
+/*
+    File: src/pages/search/SearchResult.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React from "react";
 
 import styles from "../../styles/components/search/SearchResults.module.sass";

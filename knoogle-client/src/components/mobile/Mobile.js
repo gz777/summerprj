@@ -1,3 +1,7 @@
+/*
+    File: src/components/mobile/Mobile.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
 import React, { useRef } from "react";
 
 import MobileNav from "./MobileNav";

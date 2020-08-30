@@ -1,3 +1,8 @@
+/*
+    File: src/pages/profile/Profile.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import SignIn from "./SignIn";

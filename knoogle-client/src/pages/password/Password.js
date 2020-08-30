@@ -1,3 +1,8 @@
+/*
+    File: src/pages/password/Password.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 

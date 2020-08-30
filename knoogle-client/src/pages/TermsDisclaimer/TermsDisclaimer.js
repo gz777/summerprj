@@ -1,3 +1,8 @@
+/*
+    File: src/pages/TermsDisclaimer/TermsDisclaimer.js
+    Written by : Diego Taveras & Jerry Turcios
+*/
+
 import React, { Component } from "react";
 
 import Mobile from "../../components/mobile";
