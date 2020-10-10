@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 
+import firebase, { FirebaseContext } from "../firebase";
+import firebases from "../firebase/firebase";
 import Password from "../pages/password";
 import Homepage from "../pages/homepage";
 import AboutUs from "../pages/aboutUs";
@@ -13,26 +16,22 @@ import Search from "../pages/search";
 import Tutorial from "../pages/tutorial/Tutorial";
 import TermsDisclaimer from "../pages/TermsDisclaimer";
 
-export default class AppRouter extends Component {
-    state = {
-        searchTerm: "",
-        jsonTree: ""
+function AppRouter() {
+    const [searchTerm, setSearchTerm] = useState("");
+    const [jsonTree, setJsonTree] = useState("");
+
+    const handleTermChange = payload => {
+        setSearchTerm(payload);
     };
 
-    handleTermChange = payload => {
-        this.setState({
-            searchTerm: payload
-        });
+    const handleJsonTree = payload => {
+        setJsonTree(payload);
     };
 
-    handleJsonTree = payload => {
-        this.setState({
-            jsonTree: payload
-        });
-    };
+    const [user] = useAuthState(firebases.auths());
 
-    render() {
-        return (
+    return (
+        <FirebaseContext.Provider value={{ firebase, user }}>
             <Router>
                 <Switch>
                     <Route
@@ -40,10 +39,10 @@ export default class AppRouter extends Component {
                         path="/"
                         component={() => (
                             <Homepage
-                                searchTerm={this.state.searchTerm}
-                                jsonTree={this.state.jsonTree}
-                                handleJsonTree={this.handleJsonTree}
-                                handleTermChange={this.handleTermChange}
+                                searchTerm={searchTerm}
+                                jsonTree={jsonTree}
+                                handleJsonTree={handleJsonTree}
+                                handleTermChange={handleTermChange}
                             />
                         )}
                     />
@@ -62,10 +61,11 @@ export default class AppRouter extends Component {
                         path="/ontology"
                         component={() => (
                             <Ontology
-                                searchTerm={this.state.searchTerm}
-                                jsonTree={this.state.jsonTree}
-                                handleJsonTree={this.handleJsonTree}
-                                handleTermChange={this.handleTermChange}
+                                user={user}
+                                searchTerm={searchTerm}
+                                jsonTree={jsonTree}
+                                handleJsonTree={handleJsonTree}
+                                handleTermChange={handleTermChange}
                             />
                         )}
                     />
@@ -73,16 +73,17 @@ export default class AppRouter extends Component {
                         path="/search/:query?"
                         component={() => (
                             <Search
-                                searchTerm={this.state.searchTerm}
-                                jsonTree={this.state.jsonTree}
-                                handleJsonTree={this.handleJsonTree}
-                                handleTermChange={this.handleTermChange}
+                                searchTerm={searchTerm}
+                                jsonTree={jsonTree}
+                                handleJsonTree={handleJsonTree}
+                                handleTermChange={handleTermChange}
                             />
                         )}
                     />
                     <Route component={NotFound} />
                 </Switch>
             </Router>
-        );
-    }
+        </FirebaseContext.Provider>
+    );
 }
+export default AppRouter;

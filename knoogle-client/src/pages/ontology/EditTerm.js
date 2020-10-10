@@ -58,12 +58,14 @@ class EditTerm extends Component {
                     </div>
                     <div
                         className={styles.button}
-                        onClick={() =>
+                        onClick={() => {
                             this.props.handleEditTerm(
                                 this.state.term,
                                 this.state.description
-                            )
-                        }
+                            );
+                            //enable the save button
+                            this.props.enableButton();
+                        }}
                     >
                         Save
                     </div>

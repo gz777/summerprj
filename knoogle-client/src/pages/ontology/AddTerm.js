@@ -49,13 +49,15 @@ class Modal extends Component {
                     </div>
                     <div
                         className={styles.button}
-                        onClick={() =>
+                        onClick={() => {
                             this.props.handleAddTerm(
                                 Date.now(),
                                 this.termName.current.value,
                                 this.state.description
-                            )
-                        }
+                            );
+                            //enable the save button
+                            this.props.enableButton();
+                        }}
                     >
                         Add
                     </div>
